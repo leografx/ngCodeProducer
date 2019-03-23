@@ -1,0 +1,27 @@
+{
+  "name": "ng-code-producer",
+  "version": "1.0.0",
+  "description": "Produce angular code base on database tables fields.",
+  "main": "index.js",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "pluralize": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leografx/ngCodeProducer.git"
+  },
+  "keywords": [
+    "ngCode"
+  ],
+  "author": "Leo Martinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leografx/ngCodeProducer/issues"
+  },
+  "homepage": "https://github.com/leografx/ngCodeProducer#readme"
+}

@@ -1,0 +1,9 @@
+export class Payment { 
+ 	payment_id: int;
+	date: string;
+	memo: string;
+	broker_id: int;
+	amount: string;
+	invoice_num: string;
+	loads_paid: string;
+} 
