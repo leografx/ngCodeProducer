@@ -1,6 +1,6 @@
 # ngCodeProducer
 
-Produce angular code based on mysql database table fields.
+Produces angular code, based on mysql database table fields.
 The code produced ends up on clipboard to paste on your text editor.
 
 | Command                    | Description                                              | Shorthand          |
