@@ -1,13 +1,11 @@
 const fs = require('fs');
-const { exec } = require('child_process');
-const pluralize = require('pluralize');
-
-
+import { exec } from 'child_process';
+import singularize from './singularize';
 
 module.exports = function(data, table, command) {
     let objectType = (command === 'i' || command === 'interface') ? 'interface' : 'class'
 
-    let code = `export ${objectType} ${ objectName(table) } `;
+    let code = `export ${objectType} ${ singularize(table) } `;
     let type = "";
 
     for (let i = 0; i < data.length; i++) {
@@ -23,13 +21,5 @@ module.exports = function(data, table, command) {
         exec('cat tmp.txt | pbcopy');
         process.exit();
     });
-
-    function objectName(table) {
-        let name = table[0].toUpperCase() + table.slice(1).toLowerCase();
-        name = pluralize.singular(name);
-        name += ' { \n';
-        return name;
-    }
-
 
 }

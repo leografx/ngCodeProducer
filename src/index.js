@@ -1,6 +1,6 @@
 #! /usr/local/bin/node
 
-const query = require('./db-query');
+import query from './db-query';
 
 
 let command = process.argv.slice(2)[0];
