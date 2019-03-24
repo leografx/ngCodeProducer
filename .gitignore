@@ -2,4 +2,4 @@
 /build
 /src/auth_private.js
 .DS_Store
-.vscode
+/.vscode
