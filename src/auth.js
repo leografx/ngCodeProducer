@@ -1,3 +1,5 @@
+// mysql user credentials and database
+
 const auth = {
     host: "127.0.0.1",
     user: "",
