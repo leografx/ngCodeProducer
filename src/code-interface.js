@@ -1,5 +1,4 @@
-const fs = require('fs');
-import { exec } from 'child_process';
+import produce from './code-producer';
 import singularize from './singularize';
 
 module.exports = function(data, table, command) {
@@ -16,10 +15,5 @@ module.exports = function(data, table, command) {
     }
 
     code += '} \n';
-
-    fs.writeFile('tmp.txt', code, 'utf8', () => {
-        exec('cat tmp.txt | pbcopy');
-        process.exit();
-    });
-
+    produce(code);
 }

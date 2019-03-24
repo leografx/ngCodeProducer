@@ -7,7 +7,6 @@ const connection = function() {
     con.connect(function(err) {
         if (err) trow(err);
         console.log("Connected!");
-        // module.exports.con = con;
     });
 
     function trow(error) {

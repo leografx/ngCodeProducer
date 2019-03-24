@@ -1,30 +1,16 @@
-import con from './db-config';
-import codeInterface from './code-interface';
+import con from './db-connection';
+import run from './code-run';
 
 const query = function(table, command) {
-    console.log('TABLE:', table);
+
     const sql = `SHOW FIELDS FROM  ${table}`
 
     con.query(sql, function(err, result) {
 
         if (err) throw err;
 
-        run(result);
+        run(result, command, table);
     });
-
-    function run(result) {
-        if (command === 'interface' || command === 'i') {
-            codeInterface(result, table, command);
-        }
-
-        if (command === 'class' || command === 'c') {
-            codeInterface(result, table, command);
-        }
-
-        if (command === 'react-form' || command === 'r') {
-            react(result, table, command);
-        }
-    }
 }
 
 export default query;
