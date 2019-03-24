@@ -1,27 +1,27 @@
-const fs = require('fs');
-const { exec } = require('child_process');
-const pluralize = require('pluralize');
+import produce from './code-producer';
+import singularize from './singularize';
 
+const react = function(data, table, command) {
 
-
-module.exports = function(data, table, command) {
-    let objectType = (command === 'i' || command === 'interface') ? 'interface' : 'class'
-
-    let code = `export ${objectType} ${ objectName(table) } `;
-    let type = "";
+    let code = 'export class ' + singularize(table).toLowerCase() + 'Component {';
+    code += '\n';
+    code += `\t${ singularize(table).toLowerCase() }Form = this.fb.group({`;
+    code += '\n';
 
     for (let i = 0; i < data.length; i++) {
-        type = (data[i].Type.includes('int')) ? 'int' : 'string';
-        let line = `${ data[i].Field }: ${ type };`;
-        code += '\t';
-        code += line + '\n';
+        code += `\t\t${ data[i].Field }: [''],\n`;
     }
+    code += `\t});\n`;
+    code += '\n\t';
+    code += `constructor(private fb: FormBuilder) { }`;
+    code += '\n';
 
-    code += '} \n';
+    code += `\t onSubmit() {\n`;
+    code += `\t\t console.log(${ singularize(table).toLowerCase() }Form.value);`;
+    code += '\n\t}';
+    code += '\n}';
 
-    fs.writeFile('tmp.txt', code, 'utf8', () => {
-        exec('cat tmp.txt | pbcopy');
-        process.exit();
-    });
-
+    produce(code);
 }
+
+export default react;
